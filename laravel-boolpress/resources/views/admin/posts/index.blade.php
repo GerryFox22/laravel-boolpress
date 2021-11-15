@@ -2,9 +2,12 @@
 
 @section('content')
 <div class="container">
-        <div class="row mt-4 justify-content-center">
+        <div class="mt-4 justify-content-center">
             <h1 class="mb-4">I miei Post</h1>
-            
+            <a href="{{ route('admin.posts.create') }}">
+                <button class="btn btn-primary mb-5">Crea un nuovo post</button>
+            </a>
+
             @foreach ($posts as $post)
                 <div class="col-12 mb-4">
                     <h5 class="mb-4">{{ $post->title }}</h5>
