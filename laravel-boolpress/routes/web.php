@@ -28,3 +28,10 @@ Route::middleware('auth')
 ->group(function(){
     Route::resource('posts', PostController::class);
 });
+
+Route::namespace('Api')
+->name('api.')
+->prefix('api')
+->group(function(){
+    Route::resource('posts', PostController::class);
+});
