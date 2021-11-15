@@ -50,7 +50,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        
+        $post = Post::create($data);
+
+        return redirect()->route('admin.posts.show', $post->id);
     }
 
     /**
@@ -59,9 +63,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        return view('admin.posts.show');
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
