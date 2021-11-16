@@ -11,6 +11,11 @@
             @foreach ($posts as $post)
                 <div class="col-12 mb-4">
                     <h5 class="mb-4">{{ $post->title }}</h5>
+
+                    <p><strong>Categoria : </strong> 
+                    @if ($post->category) {{ $post->category->name }} @else Nessuna categoria. 
+                    @endif
+                    </p>
                     <p><strong>Autore : </strong> {{ $post->author }}</p>
                     <p><strong>Descrizione : </strong> {{ $post->content }}</p>
                     <a href="{{ route('admin.posts.show', ['post' => $post->id ]) }}">

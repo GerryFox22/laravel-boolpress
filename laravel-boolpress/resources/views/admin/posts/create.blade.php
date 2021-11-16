@@ -9,13 +9,16 @@
                 <label for="title">Inserisci il titolo</label>
                 <input type="text" class="form-control" id="title" name="title"  placeholder="Titolo" require>
             </div>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Nessuna Categoria </option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-                
-            </select>
+            <div class="form-group">
+                <label for="category_id">Inserisci la categoria</label>
+                <select id="category_id" name="category_id" require>
+                    <option selected>Nessuna Categoria </option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach 
+                </select>
+            </div>
+        
             <div class="form-group">
                 <label for="image_url">Inserisci l'immagine</label>
                 <input type="text" class="form-control" id="image_url" name="image_url"  placeholder="Immagine Url" require>

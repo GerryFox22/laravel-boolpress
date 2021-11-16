@@ -12,6 +12,15 @@
                 value="{{ $post->title }}">
             </div>
             <div class="form-group">
+                <label for="category_id">Inserisci la categoria</label>
+                <select id="category_id" name="category_id" require>
+                    <option selected>Nessuna Categoria </option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach 
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="image_url">Inserisci l'immagine</label>
                 <input type="text" class="form-control" id="image_url" name="image_url"  placeholder="Immagine Url" require
                 value="{{ $post->image_url }}">
