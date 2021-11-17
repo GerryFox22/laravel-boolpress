@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\User;
 use App\Models\Category;
 
 class PostController extends Controller
@@ -29,6 +30,10 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
+        
+        $users = User::all();
+        
+        dump($users->pluck('id')->toArray());
         $categories = Category::all();
 
 

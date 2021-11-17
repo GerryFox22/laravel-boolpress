@@ -19,8 +19,8 @@ class CreateInfoUsersTable extends Migration
             $table->string('name');
             $table->string('city');
             $table->string('country');
-            $table->bigInteger('address');
-            $table->bigInteger('phone');
+            $table->string('address');
+            $table->string('phone');
             $table->timestamps();
 
             $table->foreign('user_id')
