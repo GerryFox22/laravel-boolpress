@@ -18,6 +18,11 @@
                     </p>
                     <p><strong>Autore : </strong> {{ $post->author }}</p>
                     <p><strong>Descrizione : </strong> {{ $post->content }}</p>
+                    <p><strong>Tags : </strong> 
+                        @foreach ($post->tags as $tag)
+                            {{$tag->name}}
+                        @endforeach
+                    </p>
                     <a href="{{ route('admin.posts.show', ['post' => $post->id ]) }}">
                         <button class="btn btn-primary">Post completo</button>
                     </a>
