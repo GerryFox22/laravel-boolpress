@@ -14,11 +14,20 @@
             <div class="form-group">
                 <label for="category_id">Inserisci la categoria</label>
                 <select id="category_id" name="category_id" require>
-                    <option selected>Nessuna Categoria </option>
+                    <option value="{{null}}" selected>Nessuna Categoria </option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach 
                 </select>
+            </div>
+            <div class="form-check form-check-inline">
+               
+                @foreach ($tags as $tag)
+                    <input class="form-check-input" type="checkbox" id="tag-{{ $tag->id }}" name="tags[]" value="{{$tag->id}}"
+                    @if (in_array( $tag->id, $tagIds ))  checked @endif>
+                    <label class="form-check-label mx-2" for="tag-{{ $tag->id }}">{{$tag->name}}</label>
+                @endforeach
+                
             </div>
             <div class="form-group">
                 <label for="image_url">Inserisci l'immagine</label>

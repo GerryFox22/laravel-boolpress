@@ -20,6 +20,11 @@
                 <p><strong>Autore : </strong> {{ $post->author }}</p>
                 <p><strong>Scritto il:</strong> {{ $post->date }}</p>
                 <p><strong>Contenuto : </strong> {{ $post->content }}</p>
+                <p><strong>Tags : </strong> 
+                        @foreach ($post->tags as $tag)
+                            {{$tag->name}}
+                        @endforeach
+                </p>
             </div>  
                 
                 

@@ -93,7 +93,11 @@ class PostController extends Controller
     {
         $categories = Category::all();
 
-        return view('admin.posts.edit', compact('post','categories'));
+        $tags = Tag::all();
+
+        $tagIds = $post->tags->pluck('id')->toArray();
+
+        return view('admin.posts.edit', compact('post','categories','tags','tagIds'));
     }
 
     /**
@@ -108,6 +112,8 @@ class PostController extends Controller
         $data = $request->all();
         
         $post->update($data);
+
+        if(array_key_exists('tags' , $data)) $post->tags()->sync($data['tags']);
 
         return redirect()->route('admin.posts.show', $post->id);
     }
