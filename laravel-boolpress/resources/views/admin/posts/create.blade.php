@@ -18,6 +18,15 @@
                     @endforeach 
                 </select>
             </div>
+
+            <div class="form-check form-check-inline">
+               
+                @foreach ($tags as $tag)
+                    <input class="form-check-input" type="checkbox" id="tag-{{ $tag->id }}" name="tags[]" value="{{$tag->id}}">
+                    <label class="form-check-label mx-2" for="tag-{{ $tag->id }}">{{$tag->name}}</label>
+                @endforeach
+                
+            </div>
         
             <div class="form-group">
                 <label for="image_url">Inserisci l'immagine</label>
