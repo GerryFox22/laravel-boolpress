@@ -126,7 +126,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if ($post->tags) $post->tags()->detach();
         $post->delete();
+
         return redirect()->route('admin.posts.index');
     }
 }
