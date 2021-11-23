@@ -1,10 +1,13 @@
 <template>
-    <div class="container">
-        <h1>Contenuto di prova</h1>
+    <div class="container p-5">
+        <PostList />
     </div>
 </template>
 
 <script>
+
+import PostList from "./Posts/PostList";
+
     export default {
         name: 'App',
         data() {
@@ -13,7 +16,7 @@
             }
         },
         components : {
-
+            PostList,
         },
         mounted() {
             console.log('Component mounted.')
