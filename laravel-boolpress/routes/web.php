@@ -35,3 +35,7 @@ Route::namespace('Api')
 ->group(function(){
     Route::resource('posts', PostController::class);
 });
+
+Route::get("{any?}", function (){
+    return view ('welcome');
+})->where ("any", ".*");
