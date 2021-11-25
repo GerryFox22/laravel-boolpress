@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mail;
+use App\Mail\SendNewMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use App\Models\Email;
 
 class MailController extends Controller
 {
@@ -24,7 +26,8 @@ class MailController extends Controller
      */
     public function create()
     {
-        //
+  
+        return view('mail.create');
     }
 
     /**
@@ -35,27 +38,29 @@ class MailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $mail = Email::create($data);
+        $mail->save();
+
+        Mail::to('account@mail.it')->send(new SendNewMail($mail));
+
+        return redirect()->route('mail.thanks');
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Mail  $mail
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Mail $mail)
+ 
+    public function thanks()
     {
-        //
+        return view('mail.thanks');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Mail  $mail
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mail $mail)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +69,10 @@ class MailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Mail  $mail
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mail $mail)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +80,10 @@ class MailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Mail  $mail
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mail $mail)
+    public function destroy($id)
     {
         //
     }

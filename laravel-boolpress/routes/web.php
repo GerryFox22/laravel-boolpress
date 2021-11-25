@@ -30,12 +30,10 @@ Route::middleware('auth')
     Route::resource('posts', PostController::class);
 });
 
-Route::namespace('Mail')
-->name('mail.')
-->prefix('mail')
-->group(function(){
-    Route::resource('mails', MailController::class);
-});
+
+Route::get('/mail/create', 'MailController@create')->name('mail.create');
+Route::post('/mail', 'MailController@store')->name('mail.store');
+Route::get('/mail/thanks', 'MailController@thanks')->name('mail.thanks');
 
 Route::namespace('Api')
 ->name('api.')
