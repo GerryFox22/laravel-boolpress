@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,13 @@ Route::middleware('auth')
 ->prefix('admin')
 ->group(function(){
     Route::resource('posts', PostController::class);
+});
+
+Route::namespace('Mail')
+->name('mail.')
+->prefix('mail')
+->group(function(){
+    Route::resource('mails', MailController::class);
 });
 
 Route::namespace('Api')
